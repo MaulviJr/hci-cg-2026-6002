@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab 01 Exam Practice – HTML & Accessibility</title>
+  <style>
+    /* Implementation of requested style profile */
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #333333;
+      background-color: #fafafa;
+    }
+    header {
+      background-color: #2c3e50;
+      color: #ffffff;
+    }
+    .week-container {
+      background-color: #ffffff;
+    }
+    .highlight-box {
+      background-color: #fff3cd; /* For important quotes/laws */
+    }
+    .theory-note {
+      background-color: #e7f3ff; /* For academic definitions */
+    }
+    h1 {
+      color: #1a1a1a;
+    }
+    header h1 {
+      color: #ffffff;
+    }
+    nav a {
+      color: #2980b9;
+    }
+    .current-nav {
+      font-weight: bold;
+      color: #c0392b;
+    }
+    footer {
+      color: #7f8c8d;
+      font-size: 0.9em;
+    }
+
+    /* Supplementary styles for code readability (Lab 01 compliant) */
+    pre {
+      background-color: #f4f4f4;
+      font-size: 0.85em;
+      color: #2c3e50;
+    }
+    code {
+      font-family: Consolas, "Courier New", monospace;
+    }
+    table {
+      background-color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Lab 01 Practice: HTML &amp; Accessibility Mistakes</h1>
+    <p>Practice guide for identifying and fixing semantic structure errors.</p>
+  </header>
+
+  <nav aria-label="Primary navigation">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="cv.html">CV</a></li>
+
+      
+      <li><a href="norman2klm.html">Norman–GOMS–KLM</a></li>
+      <li><a href="htmlExamQuestion.html" aria-current="page" class="current-nav">HTML Lab Questions</a></li>
+      <li><a href="summaries.html">Weekly Summaries</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="week-container">
+      <h2>Exam Practice Table</h2>
+      <p>The following table identifies common errors in semantic HTML and accessibility, specifically focused on the requirements for Lab 01.</p>
+
+      <table border="1">
+        <caption>Common HTML structure and accessibility mistakes with corrections</caption>
+        <thead>
+          <tr>
+            <th scope="col">UI Element / Issue</th>
+            <th scope="col">Wrong HTML (with mistake)</th>
+            <th scope="col">Correct UI Element</th>
+            <th scope="col">Correct HTML</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Two <code>h1</code> tags on a single page</th>
+            <td class="highlight-box">
+<pre><code>&lt;header&gt;&lt;h1&gt;Norman's Analysis&lt;/h1&gt;&lt;/header&gt;
+&lt;main&gt;&lt;h1&gt;GOMS Analysis&lt;/h1&gt;&lt;/main&gt;</code></pre>
+            </td>
+            <td>One <code>h1</code> for the page title; <code>h2</code> for main sections.</td>
+            <td class="theory-note">
+<pre><code>&lt;h1&gt;Interaction Analysis&lt;/h1&gt;
+&lt;h2&gt;Norman's Analysis&lt;/h2&gt;
+&lt;h2&gt;GOMS Analysis&lt;/h2&gt;</code></pre>
+            </td>
+          </tr>
+
+          <tr>
+            <th scope="row">Missing <code>alt</code> attribute on images</th>
+            <td class="highlight-box">
+<pre><code>&lt;img src="syringe-pump.png"&gt;</code></pre>
+            </td>
+            <td>Informative images must have descriptive <code>alt</code> text.</td>
+            <td class="theory-note">
+<pre><code>&lt;img src="syringe-pump.png" 
+alt="Automatic syringe pump interface with increment buttons"&gt;</code></pre>
+            </td>
+          </tr>
+
+          <tr>
+            <th scope="row">Improper Heading Hierarchy (Reversed)</th>
+            <td class="highlight-box">
+<pre><code>&lt;h2&gt;Norman's Analysis&lt;/h2&gt;
+&lt;h1&gt;First Step&lt;/h1&gt;</code></pre>
+            </td>
+            <td>Headings must follow a logical numerical order.</td>
+            <td class="theory-note">
+<pre><code>&lt;h1&gt;Norman's Analysis&lt;/h1&gt;
+&lt;h2&gt;First Step&lt;/h2&gt;</code></pre>
+            </td>
+          </tr>
+
+          <tr>
+            <th scope="row">Using <code>div</code> instead of Semantic Tags</th>
+            <td class="highlight-box">
+<pre><code>&lt;div class="nav"&gt;...&lt;/div&gt;
+&lt;div class="content"&gt;...&lt;/div&gt;</code></pre>
+            </td>
+            <td>Use <code>&lt;nav&gt;</code> for menus and <code>&lt;main&gt;</code> for primary content.</td>
+            <td class="theory-note">
+<pre><code>&lt;nav&gt;...&lt;/nav&gt;
+&lt;main&gt;...&lt;/main&gt;</code></pre>
+            </td>
+          </tr>
+
+          <tr>
+            <th scope="row">Vague Link Text</th>
+            <td class="highlight-box">
+<pre><code>To learn about GOMS, 
+&lt;a href="goms.html"&gt;click here&lt;/a&gt;.</code></pre>
+            </td>
+            <td>Link text must describe the destination when read out of context.</td>
+            <td class="theory-note">
+<pre><code>Read the 
+&lt;a href="goms.html"&gt;GOMS methodology overview&lt;/a&gt;.</code></pre>
+            </td>
+          </tr>
+
+          <tr>
+            <th scope="row">Missing <code>scope</code> in Table Headers</th>
+            <td class="highlight-box">
+<pre><code>&lt;tr&gt;
+  &lt;th&gt;Model&lt;/th&gt;
+  &lt;th&gt;Time&lt;/th&gt;
+&lt;/tr&gt;</code></pre>
+            </td>
+            <td><code>&lt;th&gt;</code> requires <code>scope="col"</code> or <code>scope="row"</code>.</td>
+            <td class="theory-note">
+<pre><code>&lt;tr&gt;
+  &lt;th scope="col"&gt;Model&lt;/th&gt;
+  &lt;th scope="col"&gt;Time&lt;/th&gt;
+&lt;/tr&gt;</code></pre>
+            </td>
+          </tr>
+
+          <tr>
+            <th scope="row">Broken Form Association</th>
+            <td class="highlight-box">
+<pre><code>&lt;label&gt;Name:&lt;/label&gt;
+&lt;input type="text" id="user-name"&gt;</code></pre>
+            </td>
+            <td>Labels must use the <code>for</code> attribute to match the input <code>id</code>.</td>
+            <td class="theory-note">
+<pre><code>&lt;label for="user-name"&gt;Name:&lt;/label&gt;
+&lt;input type="text" id="user-name"&gt;</code></pre>
+            </td>
+          </tr>
+
+          <tr>
+            <th scope="row">Missing <code>nav</code> structure</th>
+            <td class="highlight-box">
+<pre><code>&lt;nav&gt;
+  &lt;a href="index.html"&gt;Home&lt;/a&gt;
+  &lt;a href="cv.html"&gt;CV&lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+            </td>
+            <td>Navigation links should be structured as a list (<code>ul</code> &gt; <code>li</code>).</td>
+            <td class="theory-note">
+<pre><code>&lt;nav&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="index.html"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="cv.html"&gt;CV&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <hr>
+    <p>&copy; 2026 Abdul Hadi Khan. <a href="index.html">Back to Home</a></p>
+  </footer>
+
+</body>
+</html>

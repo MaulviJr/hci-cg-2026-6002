@@ -2,228 +2,192 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Norman vs. GOMS vs. KLM – Cognitive Models</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Norman vs. GOMS vs. KLM – Interaction Models</title>
   <style>
-    /* Minimal styling allowed in Lab 01: color only */
-    .row-norman { background-color: #fff3cd; } /* warm amber */
-    .row-goms   { background-color: #e7f3ff; } /* light blue */
-    .row-klm    { background-color: #e9f7ef; } /* light green */
-
-    .key-takeaway {
-      background-color: #fff3cd;
-      padding: 0.5em;
+    /* Strict Lab 01 Style Profile */
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #333333;
+      background-color: #fafafa;
+    }
+    header {
+      background-color: #2c3e50;
+      color: #ffffff;
+    }
+    .content-section {
+      background-color: #ffffff;
+    }
+    .theory-note {
+      background-color: #e7f3ff; /* Blue box for specific model details */
+    }
+    .highlight-box {
+      background-color: #fff3cd; /* Amber box for key distinctions */
+    }
+    h1 {
+      color: #1a1a1a;
+    }
+    header h1 {
+      color: #ffffff;
+    }
+    nav a {
+      color: #2980b9;
+    }
+    .current-nav {
+      font-weight: bold;
+      color: #c0392b;
+    }
+    footer {
+      color: #7f8c8d;
+      font-size: 0.9em;
+    }
+    strong {
+      color: #000000;
     }
   </style>
 </head>
 <body>
 
-  <!-- Page header -->
   <header>
-    <h1>Norman vs. GOMS vs. KLM</h1>
-    <p>Model-based evaluation and cognitive models (Dix et al., Chapter 12)</p>
+    <h1>Comparison of Interaction Models</h1>
+    <p>Understanding the transition from cognitive psychology to physical performance prediction.</p>
   </header>
 
-  <!-- Primary navigation -->
   <nav aria-label="Primary navigation">
     <ul>
       <li><a href="index.html">Home</a></li>
       <li><a href="cv.html">CV</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="analysis.html">Interaction Analysis</a></li>
-      <li><a href="norman2klm.html" aria-current="page">Norman–GOMS–KLM</a></li>
-      <li><a href="assignment01.html">Lab 01 Rules</a></li>
-
+      <li><a href="norman2klm.html" aria-current="page" class="current-nav">Norman–GOMS–KLM</a></li>
+      <li><a href="htmlExamQuestion.html">HTML Lab Questions</a></li>
+      <li><a href="summaries.html">Weekly Summaries</a></li>
     </ul>
   </nav>
 
-  <!-- Main content -->
   <main>
-
-    <!-- Comparison section -->
-    <section>
-      <h2>Clean Comparison (Class &amp; Exam Reference)</h2>
-
-      <table border="1">
-        <caption>
-          Model-based evaluation: what each model explains vs. predicts
-        </caption>
-
-        <thead>
-          <tr>
-            <th scope="col">Model</th>
-            <th scope="col">Category</th>
-            <th scope="col">What it Explains</th>
-            <th scope="col">What it Predicts</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr class="row-norman">
-            <th scope="row">Norman</th>
-            <td>Cognitive / descriptive</td>
-            <td>Understanding, errors, feedback, gulfs</td>
-            <td>❌ Nothing (no performance prediction)</td>
-          </tr>
-
-          <tr class="row-goms">
-            <th scope="row">GOMS</th>
-            <td>Predictive / analytic</td>
-            <td>Task structure for expert users</td>
-            <td>✔ Relative efficiency</td>
-          </tr>
-
-          <tr class="row-klm">
-            <th scope="row">KLM</th>
-            <td>Predictive / quantitative</td>
-            <td>Low-level physical and motor actions</td>
-            <td>✔ Execution time</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <!-- KLM operators -->
-    <section>
-      <h2>KLM Operators (Execution-Level Primitives)</h2>
+    <!-- Norman's Model -->
+    <article class="content-section">
+      <h2>1. Norman’s Model (The Execution–Evaluation Cycle)</h2>
+      <p>
+        Norman’s model breaks interaction into two primary phases (<strong>Execution</strong> and <strong>Evaluation</strong>) across seven distinct stages.
+      </p>
+      
+      <section class="theory-note">
+        <h3>The Seven Stages of Action</h3>
+        <ol>
+          <li><strong>Goal:</strong> The high-level objective (e.g., "I need more light.")</li>
+          <li><strong>Intention:</strong> The decision to act (e.g., "I will turn on the light switch.")</li>
+          <li><strong>Specify:</strong> Selecting the specific actions (e.g., "I will move to the switch and prepare to press it.")</li>
+          <li><strong>Execute:</strong> The physical performance of the action.</li>
+          <li><strong>Perceive:</strong> Observing the result (e.g., Seeing the light turn on).</li>
+          <li><strong>Interpret:</strong> Processing the observation (e.g., "The room is bright; the light is now on.")</li>
+          <li><strong>Evaluate:</strong> Comparing the result with the original goal (e.g., "Mission complete.")</li>
+        </ol>
+      </section>
 
       <p>
-        The Keystroke-Level Model (KLM) decomposes the <strong>execution phase</strong>
-        of interaction into a small set of primitive operators. KLM assumes the user
-        is expert and that the method has already been chosen.
+        <strong>Purpose:</strong> To identify the <strong>Gulf of Execution</strong> (the gap between goals and system actions) and the <strong>Gulf of Evaluation</strong> (the gap between system state and user understanding). 
       </p>
+      <p class="highlight-box">
+        <em>Note:</em> Norman's model is purely cognitive and does not account for user expertise level or predict execution time.
+      </p>
+    </article>
 
-      <table border="1">
-        <caption>
-          KLM operators (Dix et al., Chapter 12 – Cognitive Models / Physical &amp; Device Models)
-        </caption>
+    <hr>
 
-        <thead>
-          <tr>
-            <th scope="col">Operator</th>
-            <th scope="col">Name</th>
-            <th scope="col">Meaning</th>
-            <th scope="col">Example</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <th scope="row">K</th>
-            <td>Keystroking</td>
-            <td>Pressing a key (including modifiers)</td>
-            <td>Typing a character or pressing Delete</td>
-          </tr>
-
-          <tr>
-            <th scope="row">B</th>
-            <td>Button press</td>
-            <td>Pressing a mouse button</td>
-            <td>Left-click</td>
-          </tr>
-
-          <tr>
-            <th scope="row">P</th>
-            <td>Pointing</td>
-            <td>Moving pointer to a target</td>
-            <td>Move cursor to an icon</td>
-          </tr>
-
-          <tr>
-            <th scope="row">H</th>
-            <td>Homing</td>
-            <td>Switching hand between devices</td>
-            <td>Keyboard → mouse</td>
-          </tr>
-
-          <tr>
-            <th scope="row">D</th>
-            <td>Drawing</td>
-            <td>Drawing lines using a pointing device</td>
-            <td>Dragging to draw a shape</td>
-          </tr>
-
-          <tr>
-            <th scope="row">M</th>
-            <td>Mental preparation</td>
-            <td>Preparing for a physical action</td>
-            <td>Pause before clicking the correct control</td>
-          </tr>
-
-          <tr>
-            <th scope="row">R</th>
-            <td>System response</td>
-            <td>Waiting for system feedback (if required)</td>
-            <td>Application loading</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <!-- Worked example -->
-    <section>
-      <h2>Worked Example: Correcting a Single Character</h2>
-
+    <!-- GOMS Model -->
+    <article class="content-section">
+      <h2>2. GOMS Model</h2>
       <p>
-        Example task: the user notices a single-character error in a mouse-based
-        editor, deletes it, retypes it, and returns to the insertion point.
+        A cognitive model used to predict the estimated time for task completion by analyzing routine performance.
       </p>
+      <ul>
+        <li><strong>G (Goals):</strong> What the user wants to achieve.</li>
+        <li><strong>O (Operators):</strong> Basic mental or physical actions performed.</li>
+        <li><strong>M (Methods):</strong> The procedures/steps used to achieve a goal.</li>
+        <li><strong>S (Selection Rules):</strong> The logic used to choose a specific method when multiple options exist.</li>
+      </ul>
 
-      <ol>
-        <li>Move hand to mouse</li>
-        <li>Position mouse after bad character</li>
-        <li>Return to keyboard</li>
-        <li>Delete character</li>
-        <li>Type correction</li>
-        <li>Reposition insertion point</li>
-      </ol>
+      <div class="highlight-box">
+        <p><strong>Key Distinction:</strong> Unlike Norman, GOMS <strong>does not</strong> model the <em>Specify, Perceive, Interpret,</em> or <em>Evaluate</em> stages. It assumes the user is an expert performing routine tasks without error.</p>
+      </div>
+    </article>
 
-      <p>One possible KLM operator sequence:</p>
+    <hr>
 
-      <pre>
-H[mouse]
-P B[LEFT]
-H[keyboard]
-M K[DELETE]
-K[char]
-H[mouse] M P B[LEFT]
-      </pre>
-
+    <!-- KLM Model -->
+    <article class="content-section">
+      <h2>3. KLM Model (Keystroke-Level Model)</h2>
       <p>
-        This sequence illustrates how KLM models only execution-level actions.
-        High-level planning, learning, and interpretation are not represented.
+        KLM is a low-level, physical/device-based version of GOMS. It is the most granular level of prediction in this hierarchy.
       </p>
-    </section>
+      <section class="theory-note">
+        <h3>KLM Characteristics</h3>
+        <ul>
+          <li><strong>Strict Focus:</strong> Focuses strictly on <strong>Operators</strong> (e.g., keystrokes, mouse clicks, pointing, and mental preparation time).</li>
+          <li><strong>Simplification:</strong> It removes higher-level goals, methods, and selection rules to provide a raw time estimate.</li>
+          <li><strong>Unit of Measure:</strong> Performance is predicted in seconds based on established constants (e.g., [K] = 0.2s, [M] = 1.35s).</li>
+        </ul>
+      </section>
+    </article>
 
-    <!-- Key takeaways -->
-    <section>
-      <h2>Key Takeaways</h2>
+    <section class="theory-note">
+        <h3>Worked Example: Deleting a File</h3>
+        <p>This example compares two methods for deleting a file, assuming the user starts with their hand on the mouse.</p>
+        
+        <h4>Method A: Drag to Trash (Mouse Only)</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Step</th>
+              <th>Operator</th>
+              <th>Time (s)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1. Mentally prepare</td><td><strong>M</strong></td><td>1.35</td></tr>
+            <tr><td>2. Point to file</td><td><strong>P</strong></td><td>1.10</td></tr>
+            <tr><td>3. Click and hold</td><td><strong>B[down]</strong></td><td>0.10</td></tr>
+            <tr><td>4. Drag to Trash icon</td><td><strong>P</strong></td><td>1.10</td></tr>
+            <tr><td>5. Release button</td><td><strong>B[up]</strong></td><td>0.10</td></tr>
+            <tr style="border-top: 2px solid #2c3e50;">
+              <td><strong>Total</strong></td><td></td><td><strong>3.75s</strong></td>
+            </tr>
+          </tbody>
+        </table>
 
-      <blockquote class="key-takeaway">
+        <h4>Method B: Keyboard Shortcut (Ctrl+D)</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Step</th>
+              <th>Operator</th>
+              <th>Time (s)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1. Mentally prepare</td><td><strong>M</strong></td><td>1.35</td></tr>
+            <tr><td>2. Point to file</td><td><strong>P</strong></td><td>1.10</td></tr>
+            <tr><td>3. Click to select</td><td><strong>B[click]</strong></td><td>0.20</td></tr>
+            <tr><td>4. Move hand to keyboard</td><td><strong>H[kbd]</strong></td><td>0.40</td></tr>
+            <tr><td>5. Press Ctrl+D (2 keys)</td><td><strong>2K</strong></td><td>0.40</td></tr>
+            <tr style="border-top: 2px solid #2c3e50;">
+              <td><strong>Total</strong></td><td></td><td><strong>3.45s</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <div class="highlight-box">
         <p>
-          <strong>
-            The Keystroke-Level Model consists of seven primitive operators
-            (K, B, P, H, D, M, R) used to predict execution time for expert,
-            error-free interaction, and is a low-level instance of the GOMS framework.
-          </strong>
+          <strong>Analysis:</strong> While Method B introduces a <strong>Homing (H)</strong> penalty for moving the hand from mouse to keyboard, it remains faster because dragging a mouse across a screen (long-distance Pointing) is physically more time-consuming than rapid keystrokes.
         </p>
-      </blockquote>
-
-      <blockquote class="key-takeaway">
-        <p>
-          <strong>
-            KLM has only seven operators because it models execution,
-            not thinking about what to do.
-          </strong>
-        </p>
-      </blockquote>
-    </section>
+      </div>
 
   </main>
 
-  <!-- Footer -->
   <footer>
-    <p><a href="index.html">Back to Home</a></p>
+    <hr>
+    <p>&copy; 2026 HCI Lab Student. <a href="index.html">Back to Home</a></p>
   </footer>
 
 </body>
