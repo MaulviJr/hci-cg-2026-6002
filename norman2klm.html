@@ -24,7 +24,7 @@
     .highlight-box {
       background-color: #fff3cd; /* Amber box for key distinctions */
     }
-    h1 {
+    h1, h2, h3 {
       color: #1a1a1a;
     }
     header h1 {
@@ -41,8 +41,10 @@
       color: #7f8c8d;
       font-size: 0.9em;
     }
-    strong {
-      color: #000000;
+    pre {
+      background-color: #f4f4f4;
+      font-family: monospace;
+      font-size: 0.9em;
     }
   </style>
 </head>
@@ -50,13 +52,15 @@
 
   <header>
     <h1>Comparison of Interaction Models</h1>
-    <p>Understanding the transition from cognitive psychology to physical performance prediction.</p>
+    <p>Understanding Norman, GOMS, and KLM through practical examples and performance prediction.</p>
   </header>
 
   <nav aria-label="Primary navigation">
     <ul>
       <li><a href="index.html">Home</a></li>
       <li><a href="cv.html">CV</a></li>
+       <li><a href="analysis.html">Interaction Analysis</a></li>
+      
       <li><a href="norman2klm.html" aria-current="page" class="current-nav">Norman–GOMS–KLM</a></li>
       <li><a href="htmlExamQuestion.html">HTML Lab Questions</a></li>
       <li><a href="summaries.html">Weekly Summaries</a></li>
@@ -68,27 +72,27 @@
     <article class="content-section">
       <h2>1. Norman’s Model (The Execution–Evaluation Cycle)</h2>
       <p>
-        Norman’s model breaks interaction into two primary phases (<strong>Execution</strong> and <strong>Evaluation</strong>) across seven distinct stages.
+        Norman’s Model (Chapter 3: Interaction) breaks user interaction into two major phases, further divided into seven stages.
       </p>
       
       <section class="theory-note">
-        <h3>The Seven Stages of Action</h3>
+        <h3>The Seven Stages of Action: Light Switch Example</h3>
         <ol>
-          <li><strong>Goal:</strong> The high-level objective (e.g., "I need more light.")</li>
-          <li><strong>Intention:</strong> The decision to act (e.g., "I will turn on the light switch.")</li>
-          <li><strong>Specify:</strong> Selecting the specific actions (e.g., "I will move to the switch and prepare to press it.")</li>
-          <li><strong>Execute:</strong> The physical performance of the action.</li>
-          <li><strong>Perceive:</strong> Observing the result (e.g., Seeing the light turn on).</li>
-          <li><strong>Interpret:</strong> Processing the observation (e.g., "The room is bright; the light is now on.")</li>
-          <li><strong>Evaluate:</strong> Comparing the result with the original goal (e.g., "Mission complete.")</li>
+          <li><strong>Goal:</strong> “I need more light.”</li>
+          <li><strong>Intention:</strong> “I will turn on the light switch.”</li>
+          <li><strong>Specify:</strong> “I will stand up, go to the switch, and prepare to press it.”</li>
+          <li><strong>Execute:</strong> Performs the specified action (the physical press).</li>
+          <li><strong>Perceive:</strong> The user sees the light turns on and notes, “The room is bright now.”</li>
+          <li><strong>Interpret:</strong> “The room is bright, so this means the light is on now.”</li>
+          <li><strong>Evaluate:</strong> “My goal was to get light, and now there is light! Mission complete.”</li>
         </ol>
       </section>
 
       <p>
-        <strong>Purpose:</strong> To identify the <strong>Gulf of Execution</strong> (the gap between goals and system actions) and the <strong>Gulf of Evaluation</strong> (the gap between system state and user understanding). 
+        <strong>Key Limitation:</strong> It does not take into account the expertise of the user.
       </p>
-      <p class="highlight-box">
-        <em>Note:</em> Norman's model is purely cognitive and does not account for user expertise level or predict execution time.
+      <p>
+        <strong>Purpose:</strong> The purpose of this model is to find out the <strong>Gulf of Execution</strong> (gap between the user's goal and system’s action) or the <strong>Gulf of Evaluation</strong> (gap between the user's goals and system presentation) in any UI so it can be improved.
       </p>
     </article>
 
@@ -97,19 +101,39 @@
     <!-- GOMS Model -->
     <article class="content-section">
       <h2>2. GOMS Model</h2>
-      <p>
-        A cognitive model used to predict the estimated time for task completion by analyzing routine performance.
-      </p>
       <ul>
-        <li><strong>G (Goals):</strong> What the user wants to achieve.</li>
-        <li><strong>O (Operators):</strong> Basic mental or physical actions performed.</li>
-        <li><strong>M (Methods):</strong> The procedures/steps used to achieve a goal.</li>
-        <li><strong>S (Selection Rules):</strong> The logic used to choose a specific method when multiple options exist.</li>
+        <li><strong>Goal:</strong> A description of what the user wants to achieve, similar to Norman’s Model.</li>
+        <li><strong>Operator:</strong> The lowest level of actions that the user performs to reach the goal.</li>
+        <li><strong>Methods:</strong> Multiple ways to reach a goal (subgoals). For example, deleting a file can be done via drag-and-drop or by pressing Ctrl+D.</li>
+        <li><strong>Selection Rules:</strong> Predictions of which method a user will prefer (e.g., if a user's hand is off the keyboard, they may prefer the mouse).</li>
       </ul>
 
-      <div class="highlight-box">
-        <p><strong>Key Distinction:</strong> Unlike Norman, GOMS <strong>does not</strong> model the <em>Specify, Perceive, Interpret,</em> or <em>Evaluate</em> stages. It assumes the user is an expert performing routine tasks without error.</p>
-      </div>
+      <p class="highlight-box">
+        <strong>Expertise Assumption:</strong> Specify, Perceive, Interpret, and Evaluate are not explicitly modeled in GOMS because it assumes the user is an expert.
+      </p>
+
+      <h3>Example: The “Who Paid” Problem Hierarchy</h3>
+      <pre>
+GOAL: ADD-EXPENSE
+.   [select GOAL: USE-QUICK-ADD-METHOD
+.           CLICK-ADD-BUTTON-ON-NAV-BAR
+.           GOAL: ENTER-EXPENSE-DETAILS
+.                   TYPE-FRIEND-NAME-OR-GROUP
+.                   TYPE-DESCRIPTION
+.                   ENTER-AMOUNT
+.           CLICK-SAVE-BUTTON
+.   
+.           GOAL: USE-GROUP-SPECIFIC-METHOD
+.                   SELECT-GROUP-FROM-DASHBOARD
+.                   CLICK-ADD-EXPENSE-IN-GROUP
+.                   GOAL: ENTER-EXPENSE-DETAILS
+.                           TYPE-DESCRIPTION
+.                           ENTER-AMOUNT
+.                   CLICK-SAVE-BUTTON]
+      </pre>
+      <p>
+        The goal hierarchy in GOMS is useful for identifying task complexity and <strong>Short-Term Memory (STM) load</strong>.
+      </p>
     </article>
 
     <hr>
@@ -118,76 +142,115 @@
     <article class="content-section">
       <h2>3. KLM Model (Keystroke-Level Model)</h2>
       <p>
-        KLM is a low-level, physical/device-based version of GOMS. It is the most granular level of prediction in this hierarchy.
+        This is a physical/device model used to predict user performance in detail. It is a low-level version of GOMS focused on smaller tasks like closing a window or using find-and-replace, rather than complex tasks like drawing (Dix, 436).
       </p>
+
       <section class="theory-note">
-        <h3>KLM Characteristics</h3>
+        <h3>KLM Phases (Dix 12.5.1)</h3>
         <ul>
-          <li><strong>Strict Focus:</strong> Focuses strictly on <strong>Operators</strong> (e.g., keystrokes, mouse clicks, pointing, and mental preparation time).</li>
-          <li><strong>Simplification:</strong> It removes higher-level goals, methods, and selection rules to provide a raw time estimate.</li>
-          <li><strong>Unit of Measure:</strong> Performance is predicted in seconds based on established constants (e.g., [K] = 0.2s, [M] = 1.35s).</li>
+          <li><strong>Acquisition:</strong> The mental representation of the task in the user's mind.</li>
+          <li><strong>Execution:</strong> Using system facilities to perform the task. KLM focuses strictly on this part.</li>
+        </ul>
+      </section>
+
+      <h3>KLM Operators & Standard Values (Dix 438)</h3>
+      <table border="1">
+        <caption>Standard Execution Times for KLM Operators</caption>
+        <thead>
+          <tr>
+            <th scope="col">Operator</th>
+            <th scope="col">Description</th>
+            <th scope="col">Estimated Time (s)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">K</th>
+            <td>Keystroke</td>
+            <td>0.2s</td>
+          </tr>
+          <tr>
+            <th scope="row">P</th>
+            <td>Pointing with mouse</td>
+            <td>1.1s</td>
+          </tr>
+          <tr>
+            <th scope="row">H</th>
+            <td>Homing (hand movement between devices)</td>
+            <td>0.4s</td>
+          </tr>
+          <tr>
+            <th scope="row">M</th>
+            <td>Mental preparation</td>
+            <td>1.35s</td>
+          </tr>
+          <tr>
+            <th scope="row">B</th>
+            <td>Button click/release (full click = 0.2s)</td>
+            <td>0.1s</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Task Comparison: Deleting a File</h3>
+
+      <table border="1">
+        <caption>Method 1: Dragging to Trash (Mouse Only)</caption>
+        <thead>
+          <tr>
+            <th scope="col">Step</th>
+            <th scope="col">Description</th>
+            <th scope="col">Operator</th>
+            <th scope="col">Time (s)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Mentally prepare to delete</td><td>M</td><td>1.35</td></tr>
+          <tr><td>2</td><td>Point to the file</td><td>P</td><td>1.10</td></tr>
+          <tr><td>3</td><td>Press and hold left button</td><td>B[down]</td><td>0.10</td></tr>
+          <tr><td>4</td><td>Drag file to Trash icon</td><td>P</td><td>1.10</td></tr>
+          <tr><td>5</td><td>Release mouse button</td><td>B[up]</td><td>0.10</td></tr>
+          <tr><th colspan="3" scope="row">Total Execution Time</th><td><strong>3.75s</strong></td></tr>
+        </tbody>
+      </table>
+
+      <br>
+
+      <table border="1">
+        <caption>Method 2: Keyboard Shortcut (Ctrl+D)</caption>
+        <thead>
+          <tr>
+            <th scope="col">Step</th>
+            <th scope="col">Description</th>
+            <th scope="col">Operator</th>
+            <th scope="col">Time (s)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Mentally prepare to delete</td><td>M</td><td>1.35</td></tr>
+          <tr><td>2</td><td>Point to the file</td><td>P</td><td>1.10</td></tr>
+          <tr><td>3</td><td>Click to select the file</td><td>B[click]</td><td>0.20</td></tr>
+          <tr><td>4</td><td>Move hand to keyboard</td><td>H</td><td>0.40</td></tr>
+          <tr><td>5</td><td>Press Ctrl+D (Two keys)</td><td>2K</td><td>0.40</td></tr>
+          <tr><th colspan="3" scope="row">Total Execution Time</th><td><strong>3.45s</strong></td></tr>
+        </tbody>
+      </table>
+
+      <section class="highlight-box">
+        <h4>Key Takeaways for Analysis</h4>
+        <ul>
+          <li><strong>The "Homing" Factor:</strong> Method 2 includes a 0.4s penalty (H) for moving the hand, yet it remains faster.</li>
+          <li><strong>Mental Operators (M):</strong> Placed before cognitive "chunks." In highly expert users, M might be reduced or removed.</li>
+          <li><strong>Efficiency vs. Distance:</strong> As per Fitts' Law, if the Trash icon is far, the Pointing (P) time in Method 1 increases, making the Keyboard method even superior.</li>
         </ul>
       </section>
     </article>
-
-    <section class="theory-note">
-        <h3>Worked Example: Deleting a File</h3>
-        <p>This example compares two methods for deleting a file, assuming the user starts with their hand on the mouse.</p>
-        
-        <h4>Method A: Drag to Trash (Mouse Only)</h4>
-        <table>
-          <thead>
-            <tr>
-              <th>Step</th>
-              <th>Operator</th>
-              <th>Time (s)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>1. Mentally prepare</td><td><strong>M</strong></td><td>1.35</td></tr>
-            <tr><td>2. Point to file</td><td><strong>P</strong></td><td>1.10</td></tr>
-            <tr><td>3. Click and hold</td><td><strong>B[down]</strong></td><td>0.10</td></tr>
-            <tr><td>4. Drag to Trash icon</td><td><strong>P</strong></td><td>1.10</td></tr>
-            <tr><td>5. Release button</td><td><strong>B[up]</strong></td><td>0.10</td></tr>
-            <tr style="border-top: 2px solid #2c3e50;">
-              <td><strong>Total</strong></td><td></td><td><strong>3.75s</strong></td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h4>Method B: Keyboard Shortcut (Ctrl+D)</h4>
-        <table>
-          <thead>
-            <tr>
-              <th>Step</th>
-              <th>Operator</th>
-              <th>Time (s)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>1. Mentally prepare</td><td><strong>M</strong></td><td>1.35</td></tr>
-            <tr><td>2. Point to file</td><td><strong>P</strong></td><td>1.10</td></tr>
-            <tr><td>3. Click to select</td><td><strong>B[click]</strong></td><td>0.20</td></tr>
-            <tr><td>4. Move hand to keyboard</td><td><strong>H[kbd]</strong></td><td>0.40</td></tr>
-            <tr><td>5. Press Ctrl+D (2 keys)</td><td><strong>2K</strong></td><td>0.40</td></tr>
-            <tr style="border-top: 2px solid #2c3e50;">
-              <td><strong>Total</strong></td><td></td><td><strong>3.45s</strong></td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-
-      <div class="highlight-box">
-        <p>
-          <strong>Analysis:</strong> While Method B introduces a <strong>Homing (H)</strong> penalty for moving the hand from mouse to keyboard, it remains faster because dragging a mouse across a screen (long-distance Pointing) is physically more time-consuming than rapid keystrokes.
-        </p>
-      </div>
-
   </main>
 
   <footer>
     <hr>
-    <p>&copy; 2026 HCI Lab Student. <a href="index.html">Back to Home</a></p>
+    <p>References: Dix, Alan. <em>Human-Computer Interaction</em>. Pearson/Prentice-Hall, 2004.</p>
+    <p><a href="index.html">Back to Home</a></p>
   </footer>
 
 </body>
